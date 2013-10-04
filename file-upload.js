@@ -11,8 +11,10 @@
 
       return this.each(function() {
         $(document).on(o.controlEvent, o.button, function(e) {
-          var reader = new FileReader();
-          reader.readAsDataURL(client_img[0].files[0]);
+          var reader  = new FileReader()
+            , image   = $(document).find(fileControl);
+
+          reader.readAsDataURL(image[0].files[0]);
           reader.onloadend = function(e) {
             sendToPhp(e.target.result, o.formData);
           };
